@@ -1,8 +1,8 @@
 package com.algorithm.sort;
 
 /**
- * Find all of the inversion paris of an array with Integer I make use of merge
- * sort to implements the algorithm
+ * Find all of the inversion pairs of an array with Integer 
+ * I make use of merge sort to implements the algorithm
  * 
  * @author Cyanny Liang
  * 
@@ -44,18 +44,19 @@ public class InversionPair {
 		rightArr[n2] = Integer.MAX_VALUE;
 
 		// Execute merge
-		boolean isCount = false;
 		for (k = p, i = 0, j = 0; k <= r; k++) {
 			if (leftArr[i] <= rightArr[j]) {
 				dataSet[k] = leftArr[i];
 				i++;
 			} else {
-				// Here is really tricky, not count++, I have been hanging here for an hour
-				// For example, 
-				// When the leftArr = [6, 7] rightArr = [4, 5], when i = 0, j = 0, leftArr[0] > rightArr[0], 
-				// and of course leftArr[1] > rightArr[0], so count should plus (n1 - i) = 2- 0 = 2, n1 is the leftArr.length
+				// Here is really tricky, not count++, I have been hanging here
+				// for an hour
+				// For example,
+				// When the leftArr = [6, 7] rightArr = [4, 5], when i = 0, j = 0, 
+				// there is leftArr[0] > rightArr[0],
+				// and of course leftArr[1] > rightArr[0], so count should plus
+				// (n1 - i) = 2- 0 = 2, n1 is the leftArr.length
 				count = count + (n1 - i);
-				System.out.println("(" + leftArr[i] + ", " + rightArr[j] + ")");
 				dataSet[k] = rightArr[j];
 				j++;
 			}
@@ -70,20 +71,12 @@ public class InversionPair {
 			merge(p, q, r);
 		}
 	}
-	
-	public void printRes() {
-		System.out.println("Results:");
-		for (int val: dataSet) {
-			System.out.println(val);
-		}		
-	}
 
 	public static void main(String[] args) {
-		int[] arr = {7, 6, 5, 4, 3, 2, 1, 8, 9, 10};
+		int[] arr = { 7, 6, 5, 4, 3, 2, 1, 8, 9, 10, 1, 2};
 		InversionPair myInversion = new InversionPair(arr);
 		System.out.println("Sum of inversion pairs is "
-				 + myInversion.countInversions());
-		myInversion.printRes();
+				+ myInversion.countInversions());
 	}
 
 }
