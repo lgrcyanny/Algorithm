@@ -48,20 +48,16 @@ public class InversionPair {
 		for (k = p, i = 0, j = 0; k <= r; k++) {
 			if (leftArr[i] <= rightArr[j]) {
 				dataSet[k] = leftArr[i];
-				// The problem is here:...
-				// When the right array is empty, find if there is inversion pair
-				if ((j == n2) && !isCount && (leftArr[i] > rightArr[j - 1])) {
-					System.out.println("(" + leftArr[i] + ", " + rightArr[j - 1] + ")");
-					count++;
-				}
 				i++;
-				isCount = false;
 			} else {
-				count++;
+				// Here is really tricky, not count++, I have been hanging here for an hour
+				// For example, 
+				// When the leftArr = [6, 7] rightArr = [4, 5], when i = 0, j = 0, leftArr[0] > rightArr[0], 
+				// and of course leftArr[1] > rightArr[0], so count should plus (n1 - i) = 2- 0 = 2, n1 is the leftArr.length
+				count = count + (n1 - i);
 				System.out.println("(" + leftArr[i] + ", " + rightArr[j] + ")");
 				dataSet[k] = rightArr[j];
 				j++;
-				isCount = true;
 			}
 		}
 	}
@@ -83,7 +79,7 @@ public class InversionPair {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = {7, 6, 5, 4};
+		int[] arr = {7, 6, 5, 4, 3, 2, 1, 8, 9, 10};
 		InversionPair myInversion = new InversionPair(arr);
 		System.out.println("Sum of inversion pairs is "
 				 + myInversion.countInversions());
