@@ -33,7 +33,7 @@ public class MergeSort {
 		leftArr[n1] = Integer.MAX_VALUE;
 		rightArr[n2] = Integer.MAX_VALUE;
 			
-		// Execute merge, let k = r, so that copy the not empty array		
+		// Execute merge, let k = r, so that copy the non empty array		
 		for (i = 0, j = 0, k = p; k <= r; k++) {
 			if (leftArr[i] <= rightArr[j]) {
 				arr[k] = leftArr[i];
