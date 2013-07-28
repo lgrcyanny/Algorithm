@@ -16,7 +16,7 @@ public class MaxPriorityQueues {
 			this.heapSize = heap.length;
 			buildMaxHeap();
 		}
-	}
+	}	
 	
 	public void insert(int x) throws Exception {
 		heapSize++;
@@ -118,6 +118,7 @@ public class MaxPriorityQueues {
 		MaxPriorityQueues maxPriorityQueues = new MaxPriorityQueues(arr);
 		maxPriorityQueues.printHeap();
 		System.out.println("=========");
+		
 		// Extract Max
 		int max = maxPriorityQueues.extractMax();
 		System.out.println("The max is " + max);
