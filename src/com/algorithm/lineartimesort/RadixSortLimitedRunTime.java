@@ -24,6 +24,11 @@ public class RadixSortLimitedRunTime {
 		this.count = new int[n];
 	}
 	
+		
+	public int[] getData() {
+		return data;
+	}
+
 	private void stableSort(int d) {
 		int i;
 		int index;
@@ -56,26 +61,18 @@ public class RadixSortLimitedRunTime {
 		Utils.printArray(data);
 	}
 	
-	public static int[] generateRandomTestData(int n) {
-		int[] data = new int[n];
-		for (int i = 0; i < n; i++) {
-			data[i] = (int) (Math.random() * Math.pow(n * 1.0, 2));
-		}
-		return data;
-	}
-	
 	private int getValueOnDigit(int val, int d) {
 		return val % (int) Math.pow(radix * 1.0, d) / (int) Math.pow(radix * 1.0, d - 1);
 	}
 	
 	public static void main(String[] args) {
-		int[] data = generateRandomTestData(1000000);
+		int[] data = Utils.generateRandomTestData(36, 0, 36 ^ 2 - 1);
 		Utils.printArray(data);
 		RadixSortLimitedRunTime radixSort = new RadixSortLimitedRunTime(data);
 		long startTime = System.currentTimeMillis();
 		radixSort.sort();
 		long endTime = System.currentTimeMillis();
-		radixSort.printRes();
+		Utils.printArray(radixSort.getData());
 		System.out.println("Sorttime is " + (endTime - startTime));
 	}
 

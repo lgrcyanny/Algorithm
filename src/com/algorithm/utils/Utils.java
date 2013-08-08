@@ -8,4 +8,12 @@ public class Utils {
 		}
 		System.out.println("=======END===========");
 	}
+	
+	public static int[] generateRandomTestData(int arraySize, int minValue, int maxValue) {
+		int[] data = new int[arraySize];
+		for (int i = 0; i < arraySize; i++) {
+			data[i] = (int) (Math.random() * (maxValue - minValue + 1)) + minValue;
+		}
+		return data;
+	}
 }
