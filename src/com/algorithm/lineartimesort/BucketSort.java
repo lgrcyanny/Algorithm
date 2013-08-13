@@ -87,14 +87,16 @@ public class BucketSort {
 			}
 		}
 	}
-
 	
 	public static void main(String[] args) {
-		int[] data = Utils.generateRandomTestData(10, 0, 99);
-		Utils.printArray(data);
+		int[] data = Utils.generateRandomTestData(100000, 1, 99);
+		//Utils.printArray(data);
 		BucketSort mySort = new BucketSort(data);
+		long startTime = System.currentTimeMillis();
 		mySort.bucketSort();
+		long endTime = System.currentTimeMillis();
 		Utils.printArray(mySort.getResults());
+		System.out.println("Sort time is " + (endTime - startTime));
 	}
 
 }

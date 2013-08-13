@@ -64,9 +64,13 @@ public class RadixSort {
 
 	public static void main(String[] args) {
 		int[] data = {329, 457, 657, 839, 436, 720, 355};
-		RadixSort mySort = new RadixSort(data, 3);
+		//int[] data = Utils.generateRandomTestData(1000000, 1, (int)Math.pow(10.0, 5));
+		RadixSort mySort = new RadixSort(data, 5);
+		long startTime = System.currentTimeMillis();
 		mySort.sort();
+		long endTime = System.currentTimeMillis();
 		mySort.printRes();
+		System.out.println("Sort time is " + (endTime - startTime));
 	}
 
 }

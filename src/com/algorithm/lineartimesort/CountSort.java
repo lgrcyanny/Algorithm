@@ -39,10 +39,14 @@ public class CountSort {
 	
 	
 	public static void main(String[] args) {
-		int[] data = {6, 0, 2, 0, 1, 3, 4, 6, 1, 3, 2};
-		CountSort mySort = new CountSort(6, data);
+		//int[] data = {6, 0, 2, 0, 1, 3, 4, 6, 1, 3, 2};
+		int[] data = Utils.generateRandomTestData(1000000, 1, (int)Math.pow(10.0, 5));
+		CountSort mySort = new CountSort((int)Math.pow(10.0, 5), data);
+		long startTime = System.currentTimeMillis();
 		mySort.sort();
+		long endTime = System.currentTimeMillis();
 		mySort.printRes();
+		System.out.println("Sort time is " + (endTime - startTime));
 	}
 
 }

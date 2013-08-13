@@ -1,5 +1,7 @@
 package com.algorithm.heap;
 
+import com.algorithm.utils.Utils;
+
 public class HeapSort {
 	private int[] arr = {5, 13, 2, 25, 7, 17, 20, 8, 4};
 	public HeapSort(int[] data) {
@@ -95,12 +97,15 @@ public class HeapSort {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		HeapSort mySort = new HeapSort();
+		int[] data = Utils.generateRandomTestData(1000000, 1, (int)Math.pow(10.0, 5));
+		HeapSort mySort = new HeapSort(data);
 		//mySort.buildMaxHeap();
+		long startTime = System.currentTimeMillis();
 		mySort.sort();
+		long endTime = System.currentTimeMillis();
 		//mySort.buildMaxHeap2();
 		mySort.printRes();
+		System.out.println("Sort time is " + (endTime - startTime));
 
 	}
 

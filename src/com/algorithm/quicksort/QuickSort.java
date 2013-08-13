@@ -1,7 +1,9 @@
 package com.algorithm.quicksort;
 
+import com.algorithm.utils.Utils;
+
 public class QuickSort {
-	private int[] data = null;
+	public int[] data = null;
 	
 	public QuickSort(int[] data) {
 		if (data != null) {
@@ -113,11 +115,17 @@ public class QuickSort {
 	}
 	
 	public static void main(String[] args) {
-		int[] data = {13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11};
+		//int[] data = {13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11};
+		int[] data = Utils.generateRandomTestData(1000000, 1, (int)Math.pow(10.0, 5));
 		QuickSort mySort = new QuickSort(data);
+		long startTime = System.currentTimeMillis();
+		mySort.quickSort(0, data.length - 1, true);
+		long endTime = System.currentTimeMillis();
+		Utils.printArray(mySort.data);
+		System.out.println("Sort time is " + (endTime - startTime));
 		//mySort.quickSortRandom(0, data.length - 1, true);
-		mySort.quickSortHoare(0, data.length - 1);
-		mySort.printData();
+		//mySort.quickSortHoare(0, data.length - 1);
+		//mySort.printData();
 	}
 
 }
