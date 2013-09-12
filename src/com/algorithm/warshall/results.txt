@@ -1,0 +1,14 @@
+INPUT:
+0, 1, 0, 0, 
+1, 0, 1, 0, 
+0, 0, 0, 1, 
+0, 0, 0, 0, 
+OUTPUT:
+The Transitive Closure:
+1, 1, 1, 1, 
+1, 1, 1, 1, 
+0, 0, 0, 1, 
+0, 0, 0, 0, 
+Cycle Functions:
+function 0 cycle call.
+function 1 cycle call.
