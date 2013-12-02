@@ -42,4 +42,19 @@ public class Utils {
 		}
 		System.out.println("=======END===========");
 	}
+	
+	public static void swap(int[] data, int i, int j) {
+		int temp = data[i];
+		data[i] = data[j];
+		data[j] = temp;
+	}
+	
+	public static int indexOf(int[] data, int start, int end, int key) {
+		for (int i = start; i <= end; i++) {
+			if (data[i] == key) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }

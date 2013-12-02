@@ -8,7 +8,7 @@ import java.util.Iterator;
 import com.algorithm.utils.Utils;
 
 /**
- * Bucket Sort, Suppose the input data is 0~n-1 (n=100), the input distribution is homogeneous
+ * Bucket Sort, Suppose the input data is 0~n-1 (n=100), 100 exclusive the input distribution is homogeneous
  * @author lgrcyanny
  *
  */
