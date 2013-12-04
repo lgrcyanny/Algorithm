@@ -14,7 +14,7 @@ public class GraphBFS {
 	private enum Color {
 		WHITE, GREY, BLACK
 	}
-	private Vertex[] vertexes;
+	private Vertex[] vertices;
 	private ArrayList<Vertex> res;
 	private ArrayList<Vertex> queue;
 
@@ -30,14 +30,14 @@ public class GraphBFS {
 	 * @param root
 	 */
 	public void BFS(int root) {
-		vertexes = new Vertex[n];
+		vertices = new Vertex[n];
 		// Initialize each vertex,
 		// Each vertex has three segment: parent, d, color
 		for (int i = 0; i < n; i++) {
-			vertexes[i] = new Vertex(i);
+			vertices[i] = new Vertex(i);
 		}
 		
-		Vertex rootv = vertexes[root];
+		Vertex rootv = vertices[root];
 		rootv.d = 0;
 		rootv.color = Color.GREY;
 		queue.add(rootv);
@@ -46,7 +46,7 @@ public class GraphBFS {
 			Vertex u = queue.remove(0);
 			ArrayList<Integer> list = graph.get(u.vertex);
 			for (int i = 0; i < list.size(); i++) {
-				Vertex temp = vertexes[list.get(i)];
+				Vertex temp = vertices[list.get(i)];
 				// Make sure each vertex enqueue only once
 				if (temp.color == Color.WHITE) {
 					temp.parent = u;
@@ -70,11 +70,11 @@ public class GraphBFS {
 		if (v == root) {
 			System.out.println(root);
 			return;
-		} else if (vertexes[v].parent == null){
+		} else if (vertices[v].parent == null){
 			System.out.println("No path form " + root + " to " + v);
 		} else {
 			System.out.println(v);
-			printShortestPath(root, vertexes[v].parent.vertex);
+			printShortestPath(root, vertices[v].parent.vertex);
 		}		
 	}
 	

@@ -2,8 +2,6 @@ package com.algorithm.graph;
 
 import java.util.ArrayList;
 
-import com.algorithm.basicdatastructure.Stack;
-
 /**
  * DFS search a Graph within O(E+V)
  * The graph is represented by adjacent list 
@@ -12,7 +10,7 @@ import com.algorithm.basicdatastructure.Stack;
  *
  */
 public class GraphDFS {
-	class Vertex {
+	public static class Vertex {
 		public int vertex;
 		public Color color;
 		public Vertex parent;
@@ -36,7 +34,7 @@ public class GraphDFS {
 	// Number of vertex
 	private int n;
 	private ArrayList<ArrayList<Integer>> graph;
-	private Vertex[] vertexes;
+	private Vertex[] vertices;
 	private ArrayList<Vertex> res;
 	private int timer;
 	private ArrayList<Vertex> stack = new ArrayList<Vertex>();
@@ -44,7 +42,7 @@ public class GraphDFS {
 	public GraphDFS(ArrayList<ArrayList<Integer>> graph) {
 		this.n = graph.size();
 		this.graph = graph;
-		this.vertexes = new Vertex[n];
+		this.vertices = new Vertex[n];
 		this.res = new ArrayList<Vertex>();
 		this.timer = 0;
 	}
@@ -52,15 +50,19 @@ public class GraphDFS {
 	public void DFS() {
 		int i = 0;
 		for (i = 0; i < n; i++) {
-			vertexes[i] = new Vertex(i);
+			vertices[i] = new Vertex(i);
 		}
 		for (i = 0; i < n; i++) {
-			Vertex u = vertexes[i];
+			Vertex u = vertices[i];
 			if (u.color == Color.WHITE) {
-				//visitDFS(u);
-				visitDFSIterative(u);
+				visitDFS(u);
+				//visitDFSIterative(u);
 			}
 		}
+	}
+	
+	public ArrayList<Vertex> getRes() {
+		return res;
 	}
 
 	private void visitDFS(Vertex u) {
@@ -70,11 +72,11 @@ public class GraphDFS {
 		u.timestamp1 = timer;
 		ArrayList<Integer> adjList = graph.get(u.vertex);
 		for (int i = 0; i < adjList.size(); i++) {
-			Vertex v = vertexes[adjList.get(i)];
+			Vertex v = vertices[adjList.get(i)];
 			if (v.color == Color.WHITE) {
 				v.parent = u;
 				visitDFS(v);
-			}
+			} 
 		}
 		u.color = Color.BLACK;
 		timer++;
@@ -96,7 +98,7 @@ public class GraphDFS {
 			Vertex v = stack.remove(stack.size() - 1);
 			ArrayList<Integer> adjList = graph.get(v.vertex);
 			for (int i = 0; i < adjList.size(); i++) {
-				Vertex temp = vertexes[adjList.get(i)];
+				Vertex temp = vertices[adjList.get(i)];
 				if (temp.color == Color.WHITE) {
 					temp.parent = v;
 					temp.color = Color.GREY;
