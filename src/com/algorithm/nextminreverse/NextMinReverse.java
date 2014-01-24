@@ -1,7 +1,7 @@
 package com.algorithm.nextminreverse;
 
 public class NextMinReverse {
-	private final int[] bigint;
+	private int[] bigint;
 	private int[] reverse;
 	
 	public NextMinReverse(int[] bigint) {
@@ -9,45 +9,61 @@ public class NextMinReverse {
 	}
 	
 	public int[] calculate() {
+		if (bigint.length == 0) {
+			return null;
+		}
 		if (isCarry()) {
 			reverse = new int[bigint.length + 1];
 			reverse[0] = 1;
 			reverse[reverse.length - 1] = 1;
-		} else if (isOdd()){
-			reverse = calculateOddReverse();
 		} else {
-			reverse = calculateEvenReverse();
-		}
-		
+			int length = bigint.length;
+			reverse = new int[length];
+			if (length == 1) {
+				reverse[0] = bigint[0] + 1;
+			} else {
+				reverse = makeReverse(bigint);
+				if (!isBiggerThanOriginal(bigint, reverse)) {
+					bigint = incrementMiddle(bigint);
+					reverse = makeReverse(bigint);
+				}				
+			}			
+		}		
 		return reverse;
 	}
 	
-	private int[] calculateOddReverse() {
-		int[] res = new int[bigint.length];
-		int middle = bigint.length / 2;
+	private int[] makeReverse(int[] bigint) {
+		int length = bigint.length;
+		int[] res = new int[length];		
+		int middle = getMiddleIndex(bigint);
 		for (int i = 0; i <= middle; i++) {
 			res[i] = bigint[i];
 			res[bigint.length - i - 1] = bigint[i];
 		}
-		if (!isBiggerThanOriginal(bigint, res)) {
-			res[middle]++;
-		}		
 		return res;
 	}
 	
-	private int[] calculateEvenReverse() {
-		int[] res = new int[bigint.length];
-		int middle = bigint.length / 2 - 1;
-		for (int i = 0; i <= middle; i++) {
-			res[i] = bigint[i];
-			res[bigint.length - i - 1] = bigint[i];
+	private int[] incrementMiddle(int[] bigint) {
+		int middle = getMiddleIndex(bigint);
+		bigint[middle]++;
+		for (int i = middle; i > 0; i--) {
+			if (bigint[i] == 10) {
+				bigint[i] = 0;
+				bigint[i - 1]++;
+			}
 		}
-		while(!isBiggerThanOriginal(bigint, res) && middle >= 0) {
-			res[middle]++;
-			res[middle + 1]++;
-			middle--;
+		return bigint;
+	}
+	
+	private int getMiddleIndex(int[] bigint) {
+		int middle = 0;
+		int length = bigint.length;
+		if (isOdd()) {
+			middle = length / 2;
+		} else {
+			middle = length / 2 - 1;
 		}
-		return res;
+		return middle;
 	}
 	
 	private boolean isOdd() {
@@ -75,9 +91,13 @@ public class NextMinReverse {
 	}
 	
 	public static void printBigInt(int[] arr) {
-		for (int val : arr) {
-			System.out.print(val);
-		}
+		if (arr == null) {
+			System.out.print("Empty Value.");
+		} else {
+			for (int val : arr) {
+				System.out.print(val);
+			}
+		}		
 		System.out.println();
 	}
 	
@@ -106,7 +126,7 @@ public class NextMinReverse {
 		nmr = new NextMinReverse(new int[]{1, 0, 0, 0});
 		printBigInt(nmr.calculate());
 		
-		nmr = new NextMinReverse(new int[]{9, 1, 0, 1, 1});
+		nmr = new NextMinReverse(new int[]{4, 9, 4});
 		printBigInt(nmr.calculate());
 	}
 }
