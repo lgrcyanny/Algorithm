@@ -219,6 +219,7 @@ public class GraphSCC {
 		
 		GraphSCC graphSCC = new GraphSCC(graph);
 		graphSCC.generateSCC();
+		
 	}
 
 }

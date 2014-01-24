@@ -7,3 +7,4 @@ bin/*
 .settings
 .classpath
 .project
+Test.*
