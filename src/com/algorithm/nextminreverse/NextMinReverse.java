@@ -128,5 +128,8 @@ public class NextMinReverse {
 		
 		nmr = new NextMinReverse(new int[]{4, 9, 4});
 		printBigInt(nmr.calculate());
+		
+		nmr = new NextMinReverse(new int[]{4, 9, 9, 9, 4});
+		printBigInt(nmr.calculate());
 	}
 }
