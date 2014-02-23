@@ -48,8 +48,10 @@ public class LongestCommonSequence {
 	}
 	
 	public static void main(String[] args) {
-		String[] x = {"A", "B", "C", "B", "D", "A", "B"};
-		String[] y = {"B", "D", "C", "A", "B", "A"};
+		//String[] x = {"A", "B", "C", "B", "D", "A", "B"};
+		//String[] y = {"B", "D", "C", "A", "B", "A"};
+		String[] x = {"1", "0", "0", "1", "0", "1", "0", "1"};
+		String[] y = {"0", "1", "0", "1", "1", "0", "1", "1", "0"};
 		LongestCommonSequence lcs = new LongestCommonSequence(x, y);
 		lcs.calculate();
 	}
