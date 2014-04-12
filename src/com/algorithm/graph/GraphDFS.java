@@ -55,8 +55,8 @@ public class GraphDFS {
 		for (i = 0; i < n; i++) {
 			Vertex u = vertices[i];
 			if (u.color == Color.WHITE) {
-				//visitDFS(u);
-				visitDFSIterative(u);
+				visitDFS(u);
+				//visitDFSIterative(u);
 			}
 		}
 	}
